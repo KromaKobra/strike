@@ -27,6 +27,9 @@ hl.on("hyprland.start", function()
 
     -- Start shell
     hl.exec_cmd("shellctl start")
+
+    -- Proton VPN in tray only; wait for the shell's tray watcher or it opens the window instead
+    hl.exec_cmd("gdbus wait --session --timeout 30 org.kde.StatusNotifierWatcher && protonvpn-app --start-minimized")
 end)
 
 -- Resizer listeners
