@@ -113,7 +113,7 @@ create_bind(vars.kbWindowGroupCycleNext, hl.dsp.group.next(), repeating)
 create_bind(vars.kbWindowGroupCyclePrev, hl.dsp.group.prev(), repeating)
 create_bind(vars.kbToggleGroup, hl.dsp.group.toggle())
 create_bind(vars.kbUngroup, hl.dsp.window.move({ out_of_group = true }))
-create_bind(vars.kbGroupLockActive, hl.dsp.group.lock_active())
+create_bind(vars.kbGroupLockActive, hl.dsp.group.lock())
 
 -- Window actions
 for _, dir in ipairs({ "left", "right", "up", "down" }) do
@@ -210,11 +210,10 @@ create_bind(vars.kbSleep, hl.dsp.exec_cmd(vars.sleepGestureCmd), locked)
 create_bind(vars.kbClipboard, hl.dsp.exec_cmd("pkill fuzzel || caelestia clipboard"))
 create_bind(vars.kbClipboardDel, hl.dsp.exec_cmd("pkill fuzzel || caelestia clipboard -d"))
 create_bind(vars.kbEmoji, hl.dsp.exec_cmd("pkill fuzzel || caelestia emoji -p"))
-create_bind(
-    vars.kbClipboardPasteLatest,
-    hl.dsp.exec_cmd('sleep 0.5s && ydotool type -d 1 "$(cliphist list | head -1 | cliphist decode)"'),
-    locked
-)
+-- Type clipboard as keystrokes (VM consoles that can't paste), see ~/.local/bin/cliptype
+create_bind(vars.kbClipboardPasteLatest, hl.dsp.exec_cmd("cliptype --latest"), locked)
+create_bind(vars.kbClipboardType, hl.dsp.exec_cmd("pkill fuzzel || cliptype"))
+create_bind(vars.kbClipboardTypeStop, hl.dsp.exec_cmd("cliptype --stop"), locked)
 
 -- Testing
 create_bind(

@@ -147,5 +147,7 @@ return {
     kbClipboard                = "SUPER + V",
     kbClipboardDel             = "SUPER + ALT + V",
     kbClipboardPasteLatest     = "CTRL + SHIFT + ALT + V",
+    kbClipboardType            = "SUPER + SHIFT + V",
+    kbClipboardTypeStop        = "CTRL + SHIFT + ALT + Escape",
     kbEmoji                    = "SUPER + Period",
 }
